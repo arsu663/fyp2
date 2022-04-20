@@ -1,5 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
-import 'test.dart';
+
+import 'app/main_dependencies.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MealApp',
       theme: ThemeData(
-        primaryColor: Colors.pink,
+        primaryColor: Color.fromRGBO(100, 160, 150, 1),
         accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
               headline5: TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: Test(),
+      home: LoginScreen(),
     );
   }
 }
