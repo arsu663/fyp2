@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:mealapp/screens/sign_up_screen.dart';
 
 import 'app/main_dependencies.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
               headline5: TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

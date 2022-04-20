@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/screens/sign_up_screen.dart';
 import 'main_dependencies.dart';
 
 Route<dynamic> createRoute(RouteSettings settings) {
@@ -7,8 +8,10 @@ Route<dynamic> createRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => SplashScreen());
     case "/home_screen":
       return MaterialPageRoute(builder: (context) => HomeScreen());
-    case "/login_screen":
+    case "/login":
       return MaterialPageRoute(builder: (context) => LoginScreen());
+    case "/signup":
+      return MaterialPageRoute(builder: (context) => SignUpScreen());
   }
   return MaterialPageRoute(builder: (context) => SplashScreen());
 }
