@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
-import 'package:mealapp/screens/sign_up_screen.dart';
-import '../app/router.dart';
+// import 'package:mealapp/screens/signup/sign_up_screen.dart';
+import '../../app/router.dart';
 
 class HomeScreen extends StatelessWidget {
   Widget buildButton(
@@ -79,8 +79,12 @@ class HomeScreen extends StatelessWidget {
           buildButton(
               buttonTitle: 'Sign Up',
               tapHandler: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignUpScreen()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(),
+                  ),
+                );
               }),
         ],
       ),

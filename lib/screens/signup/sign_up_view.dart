@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mealapp/screens/login_screen.dart';
+
+import '../../app/main_dependencies.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

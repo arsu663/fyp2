@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mealapp/screens/sign_up_screen.dart';
+import 'package:mealapp/screens/signup/sign_up_view.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String route = "/LoginPage";
