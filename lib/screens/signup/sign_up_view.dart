@@ -55,12 +55,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Container(
                 height: height,
                 width: width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/bg.jpg"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                // decoration: BoxDecoration(
+                //   image: DecorationImage(
+                //     image: AssetImage("assets/bg.jpg"),
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
                 child: Column(
                   children: [
                     SizedBox(

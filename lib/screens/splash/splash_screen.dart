@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../app/main_dependencies.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -69,10 +71,19 @@ class _SplashScreenState extends State<SplashScreen> {
                     primary: Colors.white,
                     backgroundColor: Colors.teal,
                     shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
                   ),
                   onPressed: () {
-                    print('Pressed');
+                    print('Lets start button Pressed');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
                   },
                 ),
               ),
