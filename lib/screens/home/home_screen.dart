@@ -3,7 +3,13 @@ import 'package:mealapp/app/main_dependencies.dart';
 // import 'package:mealapp/screens/signup/sign_up_screen.dart';
 import '../../app/router.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  static const String route = "/homepage_screen";
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Widget buildButton(
       {required String buttonTitle, required VoidCallback tapHandler}) {
     return Container(

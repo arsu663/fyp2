@@ -71,7 +71,7 @@ class _DoctorDashboardScreenState extends State<DoctorDashboardScreen> {
             elevation: 10.0,
             title: Center(
               child: Text(
-                "Doctor Dashboard",
+                "Hello, Dr Arsalan",
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   color: Colors.black,

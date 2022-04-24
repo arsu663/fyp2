@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:mealapp/mock/mock_list_doctors.dart';
 
 import 'app/main_dependencies.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MealApp',
+      title: 'Mohmand Hospital Appointment Booking System',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(100, 160, 150, 1),
         accentColor: Colors.amber,
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
               headline5: TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: PatientDashboardScreen(),
+      home: DoctorList(doctors),
     );
   }
 }

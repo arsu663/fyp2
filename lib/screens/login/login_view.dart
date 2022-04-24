@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mealapp/app/main_dependencies.dart';
 import 'package:mealapp/screens/signup/sign_up_view.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -99,8 +100,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
+                          //just for practice, when pressed it will redirect to
+                          //Patient Dashboard screen
                           onPressed: () {
-                            print('Pressed');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PatientDashboardScreen(),
+                              ),
+                            );
                           },
                         ),
                       ),
@@ -182,9 +190,10 @@ _buildTextField(String text) {
       ),
       child: TextField(
         decoration: InputDecoration(
-            hintText: text,
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: 20.0)),
+          hintText: text,
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(left: 20.0),
+        ),
       ),
     ),
   );

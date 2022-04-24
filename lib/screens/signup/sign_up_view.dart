@@ -141,7 +141,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    print('Pressed');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            DoctorDashboardScreen(),
+                                      ),
+                                    );
                                   },
                                 ),
                               ),
