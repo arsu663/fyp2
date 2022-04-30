@@ -29,8 +29,8 @@ List<Category> listCategory = [
   ),
   Category(
     icon: Icons.settings,
-    title: "View Records",
-    subTitle: "See your medical history",
+    title: "Doctors",
+    subTitle: "See all Doctors",
     color: Colors.teal[200],
   ),
 ];
@@ -80,7 +80,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
               ),
             ),
           ),
-          drawer: Drawer(),
+          // drawer: Drawer(),
           body: buildGridView(),
         );
       },

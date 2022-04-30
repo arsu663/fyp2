@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               headline5: TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: DoctorList(doctors),
+      home: SplashScreen(),
     );
   }
 }
