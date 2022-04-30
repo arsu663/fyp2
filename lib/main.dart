@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mealapp/mock/mock_list_doctors.dart';
+import 'package:mealapp/screens/appointment/pickAppointment.dart';
 
 import 'app/main_dependencies.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
               headline5: TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: SplashScreen(),
+      home: DoctorPickAppointment(),
     );
   }
 }
