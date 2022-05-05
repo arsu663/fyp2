@@ -24,29 +24,31 @@ class _DoctorListState extends State<DoctorList> {
           onTap: () {
             print("pressed");
           },
-          child: ListView.separated(
-            itemCount: widget.doctors.length,
-            itemBuilder: (context, index) => ListTile(
-              // dense: true,
-              title: Text(
-                widget.doctors[index].name as String,
-                style: TextStyle(fontSize: 20),
-              ),
-              subtitle: Text('${widget.doctors[index].email} email'),
-              trailing: Text(
-                widget.doctors[index].speciality as String,
-                style: TextStyle(fontSize: 16),
-              ),
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  "${widget.doctors[index].imageURL}",
+          child: SafeArea(
+            child: ListView.separated(
+              itemCount: widget.doctors.length,
+              itemBuilder: (context, index) => ListTile(
+                // dense: true,
+                title: Text(
+                  widget.doctors[index].name as String,
+                  style: TextStyle(fontSize: 20),
                 ),
-                radius: 40,
+                subtitle: Text('${widget.doctors[index].email} email'),
+                trailing: Text(
+                  widget.doctors[index].speciality as String,
+                  style: TextStyle(fontSize: 16),
+                ),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "${widget.doctors[index].imageURL}",
+                  ),
+                  radius: 40,
+                ),
               ),
-            ),
-            separatorBuilder: (context, index) => Divider(
-              color: Colors.blueGrey,
-              thickness: 0.7,
+              separatorBuilder: (context, index) => Divider(
+                color: Colors.blueGrey,
+                thickness: 0.7,
+              ),
             ),
           ),
         ),

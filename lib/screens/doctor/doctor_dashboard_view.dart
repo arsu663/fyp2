@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mealapp/screens/appointment/pickAppointment.dart';
 
 import '../../app/main_dependencies.dart';
 
@@ -80,17 +81,23 @@ class _DoctorDashboardScreenState extends State<DoctorDashboardScreen> {
             ),
           ),
           drawer: Drawer(),
-          body: buildGridViewDoctor(),
+          body: buildGridViewDoctor(context),
         );
       },
     );
   }
 }
 
-buildGridViewDoctor() {
+buildGridViewDoctor(BuildContext context) {
   return InkWell(
     onTap: () {
       print("Pressed");
+       Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorPickAppointment(),
+          ),
+        );
     },
     child: GridView.builder(
       padding: EdgeInsets.only(top: 80),

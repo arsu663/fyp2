@@ -51,7 +51,6 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
         MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
   }
 
-  int _bottomNavIndex = 0;
   double? width, height;
   @override
   Widget build(BuildContext context) {

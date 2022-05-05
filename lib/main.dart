@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:mealapp/mock/mock_list_doctors.dart';
 import 'package:mealapp/screens/appointment/pickAppointment.dart';
+import 'package:mealapp/screens/patient_appointment/appointments.dart';
 
 import 'app/main_dependencies.dart';
 
