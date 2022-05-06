@@ -55,5 +55,5 @@ List<Doctor> doctors = [
       email: "mit@gmail.com",
       speciality: "Eyes",
       imageURL:
-          "https://admin.doctors-365.de/Content/Doctors/ada6c780-7f6c-4cc0-ac99-3fdbb318bf71.jpg"),
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Q9vU-Rw3prr9aSfCJB06vBFWEALcdVO5CpD1DyXcuWb0KYlqOsPGMcF4mUNvYGb-Y4A&usqp=CAU"),
 ];

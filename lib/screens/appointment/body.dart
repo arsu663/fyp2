@@ -13,42 +13,49 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ClipRect(
-            child: Container(
-          margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-          height: 150,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(50),
-              bottomRight: Radius.circular(50),
-              topLeft: Radius.circular(50),
-              topRight: Radius.circular(50),
+          child: Container(
+            margin: EdgeInsets.only(
+              top: 10,
             ),
-            color: Theme.of(context).primaryColor,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(500),
-                child: Image.asset(
-                  '${patients[0].doctor!.imageURL}',
-                  width: 90,
-                  height: 90,
-                  fit: BoxFit.fill,
-                ),
+            height: 150,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'Dr ${patients[2].doctor!.name} ',
-                  style:
-                      TextStyle(height: 2, fontSize: 19, color: Colors.white),
+              color: Theme.of(context).primaryColor,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(500),
+                  child: Image.asset(
+                    '${patients[0].doctor!.imageURL}',
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'Dr ${patients[2].doctor!.name} \n${patients[2].doctor!.speciality} ',
+                    style: TextStyle(
+                      height: 2,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        )),
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 40, top: 40, bottom: 10),
           child: Text(
