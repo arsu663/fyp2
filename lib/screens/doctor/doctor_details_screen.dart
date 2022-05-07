@@ -64,8 +64,8 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
               ),
               Center(
                   child: ElevatedButton(
-                      // style: ButtonStyle(elevation: 6 ),
-                      onPressed: null,
+                      // style: ButtonStyle(backgroundColor:  ),
+                      onPressed: () {},
                       child: Text("Book Appointment")))
             ],
           ),
