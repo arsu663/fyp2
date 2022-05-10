@@ -234,7 +234,7 @@ _buildTextField(String text) {
           ),
         ),
       ),
-      child: TextField(
+      child: TextFormField(
         decoration: InputDecoration(
             hintText: text,
             border: InputBorder.none,
