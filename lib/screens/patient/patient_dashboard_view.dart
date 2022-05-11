@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mealapp/services/auth.dart';
 
 import '../../app/main_dependencies.dart';
 import '../../mock/mock_list_doctors.dart';
@@ -10,107 +11,95 @@ class PatientDashboardScreen extends StatefulWidget {
 }
 
 class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
-  
-  bool isFullScreen(Size currentSize, Size fullSize) {
-    print("$fullSize == $currentSize");
+  final AuthService _auth = AuthService();
 
-    if (currentSize.height == fullSize.height &&
-        fullSize.width == currentSize.width)
-      return true;
-    else
-      return false;
-  }
-
-  Size getSize(BuildContext context) {
-    return Size(
-        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
-  }
-
-  double? width, height;
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        width = constraints.maxWidth;
-        height = constraints.maxHeight;
-        return Scaffold(
-          // backgroundColor: Colors.teal[100],
-          backgroundColor: Colors.white,
-          appBar: AppBar(
+    return Scaffold(
+      backgroundColor: Colors.brown[300],
+      // backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        actions: [
+          CircleAvatar(
             backgroundColor: Theme.of(context).primaryColor,
-            actions: [
-              CircleAvatar(
-                backgroundColor: Theme.of(context).primaryColor,
-                child: Image.asset('assets/images/arsu.png'),
-              ),
-            ],
-            elevation: 10.0,
-            title: Center(
-              child: Text(
-                "Patient Dashboard",
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  color: Colors.black,
-                ),
-              ),
+            child: Image.asset('assets/images/arsu.png'),
+          ),
+        ],
+        elevation: 10.0,
+        title: Center(
+          child: Text(
+            "Patient Dashboard",
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: Colors.black,
             ),
           ),
-          // drawer: Drawer(),
-          body: Column(
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildPatientCategory(
-                    icon: FontAwesomeIcons.bookMedical,
-                    title: "Appointments",
-                    subtitle: "Book the appointment with the doctor",
-                    tapHhandler: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DoctorList(doctors)));
-                    },
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  buildPatientCategory(
-                    icon: FontAwesomeIcons.recordVinyl,
-                    title: "Update Booking",
-                    subtitle: "Please Update your Bookings",
-                    tapHhandler: () {},
-                  ),
-                ],
+              buildPatientCategory(
+                icon: FontAwesomeIcons.bookMedical,
+                title: "Appointments",
+                subtitle: "Book the appointment with the doctor",
+                tapHhandler: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DoctorList(doctors),
+                    ),
+                  );
+                },
               ),
               SizedBox(
-                height: 30,
+                width: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildPatientCategory(
-                    icon: Icons.forum,
-                    title: "Track Status",
-                    subtitle: "Track the appointment status",
-                    tapHhandler: () {},
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  buildPatientCategory(
-                    icon: FontAwesomeIcons.bookMedical,
-                    title: "Previous Appointments",
-                    subtitle: "See All your appointments",
-                    tapHhandler: () {},
-                  ),
-                ],
+              buildPatientCategory(
+                icon: FontAwesomeIcons.recordVinyl,
+                title: "Update Booking",
+                subtitle: "Please Update your Bookings",
+                tapHhandler: () {},
               ),
             ],
           ),
-        );
-      },
+          SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildPatientCategory(
+                icon: Icons.forum,
+                title: "Track Status",
+                subtitle: "Track the appointment status",
+                tapHhandler: () {},
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              buildPatientCategory(
+                icon: FontAwesomeIcons.bookMedical,
+                title: "Previous Appointments",
+                subtitle: "See All your appointments",
+                tapHhandler: () {},
+              ),
+            ],
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          await _auth.signout();
+        },
+        label: const Text('Logout'),
+        icon: const Icon(Icons.person),
+        backgroundColor: Colors.brown[500],
+      ),
     );
   }
 }
@@ -135,7 +124,7 @@ buildPatientCategory({
               offset: Offset.zero,
             ),
           ],
-          color: Colors.teal[500],
+          color: Colors.brown[500],
         ),
         height: 200,
         width: 170,

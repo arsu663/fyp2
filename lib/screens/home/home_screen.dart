@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[100],
+      backgroundColor: Colors.brown[300],
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text("Welcome to Mohmand hospital"),
@@ -72,12 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
           buildButton(
               buttonTitle: 'Login',
               tapHandler: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DoctorPickAppointment(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => LoginScreen(),
+                //   ),
+                // );
               }),
           SizedBox(
             height: 40,
@@ -85,12 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
           buildButton(
               buttonTitle: 'Sign Up',
               tapHandler: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SignUpScreen(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => SignUpScreen(),
+                //   ),
+                // );
               }),
         ],
       ),

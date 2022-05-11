@@ -1,8 +1,6 @@
-import 'package:mealapp/models/abstract_user.dart';
 
-import './patient.dart';
 
-class AppUser implements AbstractUser {
+class AppUser  {
   dynamic _id;
   String _name;
   String _login;
@@ -58,41 +56,41 @@ class AppUser implements AbstractUser {
         // _appointment = appointment as DateTime
         ;
 
-  AppUser.copy(AppUser from)
-      : this(
-          id: from.id,
-          name: from.name,
-          login: from.login,
-          password: from.password,
-          email: from.email,
-          phoneNumber: from.phoneNumber,
-          photoUrl: from._photo,
-          // appointment: from.appointment,
-          hasAppointment: from.hasAppointment,
-        );
+  // AppUser.copy(AppUser from)
+  //     : this(
+  //         id: from.id,
+  //         name: from.name,
+  //         login: from.login,
+  //         password: from.password,
+  //         email: from.email,
+  //         phoneNumber: from.phoneNumber,
+  //         photoUrl: from._photo,
+  //         // appointment: from.appointment,
+  //         hasAppointment: from.hasAppointment,
+  //       );
 
- AppUser.fromJson(Map<String, dynamic> json)
-      : this(
-          id: json['id'],
-          name: json['name'],
-          photoUrl: json['photoUrl'],
-          login: json['login'],
-          password: json['password'],
-          email: json['email'],
-          phoneNumber: json['phoneNumber'],
-          // appointment: json['appointment'],
-          hasAppointment: json['hasAppointment'],
-        );
+//  AppUser.fromJson(Map<String, dynamic> json)
+//       : this(
+//           id: json['id'],
+//           name: json['name'],
+//           photoUrl: json['photoUrl'],
+//           login: json['login'],
+//           password: json['password'],
+//           email: json['email'],
+//           phoneNumber: json['phoneNumber'],
+//           // appointment: json['appointment'],
+//           hasAppointment: json['hasAppointment'],
+//         );
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'login': login,
-        'password': password,
-        'email': email,
-        'phoneNumber': phoneNumber,
-        'photoUrl': photo,
-        // 'appointment': appointment,
-        'hasAppointment': hasAppointment,
-      };
+  // Map<String, dynamic> toJson() => {
+        // 'id': id,
+        // 'name': name,
+        // 'login': login,
+        // 'password': password,
+        // 'email': email,
+        // 'phoneNumber': phoneNumber,
+        // 'photoUrl': photo,
+        // // 'appointment': appointment,
+        // 'hasAppointment': hasAppointment,
+      // };
 }
