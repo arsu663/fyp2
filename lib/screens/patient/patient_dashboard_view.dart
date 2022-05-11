@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mealapp/screens/authenticate/authenticate.dart';
 import 'package:mealapp/services/auth.dart';
 
 import '../../app/main_dependencies.dart';
@@ -95,6 +96,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           await _auth.signout();
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Authenticate()));
         },
         label: const Text('Logout'),
         icon: const Icon(Icons.person),
