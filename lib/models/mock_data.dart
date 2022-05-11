@@ -1,7 +1,6 @@
 import 'package:mealapp/app/main_dependencies.dart';
 
 import './appointment.dart';
-import './patient.dart';
 
 import './doctor.dart';
 

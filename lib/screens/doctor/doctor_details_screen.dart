@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mealapp/mock/mock_list_doctors.dart';
 
 import '../../models/doctor.dart';
 

@@ -1,14 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mealapp/mock/mock_list_doctors.dart';
-import 'package:mealapp/screens/appointment/pickAppointment.dart';
-import 'package:mealapp/screens/doctor/doctor_details_screen.dart';
-import 'package:mealapp/screens/patient_appointment/appointments.dart';
 
 import 'app/main_dependencies.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -19,8 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mohmand Hospital Appointment Booking System',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(100, 160, 150, 1),
-        accentColor: Colors.amber,
+        // primaryColor: Color.fromRGBO(100, 160, 150, 1),
+        primaryColor: Colors.brown[500],
+        accentColor: Colors.pink[300],
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(

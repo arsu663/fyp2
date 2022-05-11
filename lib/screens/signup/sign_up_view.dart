@@ -4,22 +4,24 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../app/main_dependencies.dart';
 
 class SignUpScreen extends StatefulWidget {
+  //  final Function toggleView;
+  // SignUpScreen({ required this.toggleView });
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // Color _color = Colors.teal;
-  double height = 0.0, width = 0.0;
-  bool isFullScreen(Size currentSize, Size fullSize) {
-    print("$fullSize == $currentSize");
+  // // Color _color = Colors.teal;
+  // double height = 0.0, width = 0.0;
+  // bool isFullScreen(Size currentSize, Size fullSize) {
+  //   print("$fullSize == $currentSize");
 
-    if (currentSize.height == fullSize.height &&
-        fullSize.width == currentSize.width)
-      return true;
-    else
-      return false;
-  }
+  //   if (currentSize.height == fullSize.height &&
+  //       fullSize.width == currentSize.width)
+  //     return true;
+  //   else
+  //     return false;
+  // }
 
   void _showButtonPressDialog(BuildContext context, String provider) {
     Scaffold.of(context).showSnackBar(SnackBar(
@@ -36,8 +38,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       data: ThemeData(primaryColor: _color),
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          height = constraints.maxHeight;
-          width = constraints.maxWidth;
+          // height = constraints.maxHeight;
+          // width = constraints.maxWidth;
           return Scaffold(
             backgroundColor: Colors.teal[50],
             appBar: AppBar(
@@ -53,8 +55,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             body: SingleChildScrollView(
               child: Container(
-                height: height,
-                width: width,
+                // height: height,
+                // width: width,
                 // decoration: BoxDecoration(
                 //   image: DecorationImage(
                 //     image: AssetImage("assets/bg.jpg"),
@@ -63,15 +65,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // ),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: isFullScreen(
-                        Size(width, height),
-                        Size(MediaQuery.of(context).size.width,
-                            MediaQuery.of(context).size.height),
-                      )
-                          ? 0.1 * height
-                          : 0.2 * height,
-                    ),
+                    // SizedBox(
+                    //   height: isFullScreen(
+                    //     Size(width, height),
+                    //     Size(MediaQuery.of(context).size.width,
+                    //         MediaQuery.of(context).size.height),
+                    //   )
+                    //       ? 0.1 * height
+                    //       : 0.2 * height,
+                    // ),
                     // Container(
                     //   // height: 150,
                     //   width: double.infinity,

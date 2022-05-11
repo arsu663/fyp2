@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
 import 'package:mealapp/screens/appointment/pickAppointment.dart';
 // import 'package:mealapp/screens/signup/sign_up_screen.dart';
-import '../../app/router.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = "/homepage_screen";
