@@ -96,7 +96,8 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           await _auth.signout();
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Authenticate()));
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Authenticate()));
         },
         label: const Text('Logout'),
         icon: const Icon(Icons.person),
