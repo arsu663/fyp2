@@ -7,6 +7,7 @@ import '../../app/main_dependencies.dart';
 import '../../mock/mock_list_doctors.dart';
 
 class PatientDashboardScreen extends StatefulWidget {
+   static const String route = "/PatientDashboardScreen";
   @override
   State<PatientDashboardScreen> createState() => _PatientDashboardScreenState();
 }
@@ -97,7 +98,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
         onPressed: () async {
           await _auth.signout();
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Authenticate()));
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
         },
         label: const Text('Logout'),
         icon: const Icon(Icons.person),

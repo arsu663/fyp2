@@ -7,9 +7,10 @@ import '../../shared/constants.dart';
 import '../../shared/loading.dart';
 
 class SignUpScreen extends StatefulWidget {
-  final Function toggleView;
+  // final Function toggleView;
 
-  SignUpScreen({required this.toggleView});
+  // SignUpScreen({required this.toggleView});
+  static const String route = "/signup";
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -40,7 +41,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Login'),
-                  onPressed: () => widget.toggleView(),
+                  // onPressed: () => widget.toggleView(),
+                  onPressed: () {},
+                  // onPressed: () async {
                   // onPressed: () async {
                   //   dynamic result = await _auth.signInAnnon();
                   //   if (result == null) {
@@ -113,9 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginScreen(
-                                              toggleView: () {},
-                                            )));
+                                        builder: (context) => LoginScreen()));
                               }
                             }
                           }),

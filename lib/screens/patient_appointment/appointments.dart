@@ -4,6 +4,8 @@ import './body.dart';
 import './bar.dart';
 
 class PatientAppointmentScreen extends StatefulWidget {
+     static const String route = "/PatientAppointmentScreen";
+
   @override
   _PatientAppointmentScreenState createState() =>
       _PatientAppointmentScreenState();

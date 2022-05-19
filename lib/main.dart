@@ -2,9 +2,9 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mealapp/models/user.dart';
-import 'package:mealapp/screens/authenticate/authenticate.dart';
-import 'package:mealapp/screens/home/wrapper.dart';
+import 'package:mealapp/models/appUser.dart';
+import 'package:mealapp/screens/login/login_viewmodel.dart';
+import './app/router.dart' as router;
 import 'package:mealapp/services/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -19,10 +19,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<AppUser?>.value(
-      value: AuthService().user,
-      // initialData: ,
-      initialData: null,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LoginViewModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Mohmand Hospital Appointment Booking System',
@@ -43,7 +43,8 @@ class MyApp extends StatelessWidget {
                     TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
               ),
         ),
-        home: Authenticate(),
+        initialRoute: LoginScreen.route,
+        onGenerateRoute: router.createRoute,
       ),
     );
   }
@@ -51,3 +52,5 @@ class MyApp extends StatelessWidget {
 
 
 //Last commit changin colors 21 May
+
+//192.168.1.1
