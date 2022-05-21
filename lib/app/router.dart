@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/mock/mock_list_doctors.dart';
-// import 'package:mealapp/screens/signup/sign_up_screen.dart';
 import 'main_dependencies.dart';
 
 Route<dynamic> createRoute(RouteSettings? settings) {

@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const app = express();
-// const todosRouter = require("./api/controllers/todos_controller");
 const usersRouter = require("./api/controller/users_controller");
 
 app.use(express.json());

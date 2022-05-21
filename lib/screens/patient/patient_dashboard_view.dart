@@ -7,7 +7,7 @@ import '../../app/main_dependencies.dart';
 import '../../mock/mock_list_doctors.dart';
 
 class PatientDashboardScreen extends StatefulWidget {
-   static const String route = "/PatientDashboardScreen";
+  static const String route = "/PatientDashboardScreen";
   @override
   State<PatientDashboardScreen> createState() => _PatientDashboardScreenState();
 }
@@ -39,60 +39,62 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildPatientCategory(
-                icon: FontAwesomeIcons.bookMedical,
-                title: "Appointments",
-                subtitle: "Book the appointment with the doctor",
-                tapHhandler: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DoctorList(doctors),
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              buildPatientCategory(
-                icon: FontAwesomeIcons.recordVinyl,
-                title: "Update Booking",
-                subtitle: "Please Update your Bookings",
-                tapHhandler: () {},
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildPatientCategory(
-                icon: Icons.forum,
-                title: "Track Status",
-                subtitle: "Track the appointment status",
-                tapHhandler: () {},
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              buildPatientCategory(
-                icon: FontAwesomeIcons.bookMedical,
-                title: "Previous Appointments",
-                subtitle: "See All your appointments",
-                tapHhandler: () {},
-              ),
-            ],
-          ),
-        ],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildPatientCategory(
+                  icon: FontAwesomeIcons.bookMedical,
+                  title: "Appointments",
+                  subtitle: "Book the appointment with the doctor",
+                  tapHhandler: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DoctorList(doctors),
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                buildPatientCategory(
+                  icon: FontAwesomeIcons.recordVinyl,
+                  title: "Update Booking",
+                  subtitle: "Please Update your Bookings",
+                  tapHhandler: () {},
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildPatientCategory(
+                  icon: Icons.forum,
+                  title: "Track Status",
+                  subtitle: "Track the appointment status",
+                  tapHhandler: () {},
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                buildPatientCategory(
+                  icon: FontAwesomeIcons.bookMedical,
+                  title: "Previous Appointments",
+                  subtitle: "See All your appointments",
+                  tapHhandler: () {},
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {

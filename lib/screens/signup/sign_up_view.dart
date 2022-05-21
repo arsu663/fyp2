@@ -38,22 +38,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 "Register to Mohmand Hospital",
               ),
               actions: <Widget>[
-                FlatButton.icon(
+                   FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Login'),
-                  // onPressed: () => widget.toggleView(),
-                  onPressed: () {},
-                  // onPressed: () async {
-                  // onPressed: () async {
-                  //   dynamic result = await _auth.signInAnnon();
-                  //   if (result == null) {
-                  //     print("Error Siging up");
-                  //   } else {
-                  //     print("Registered");
-                  //     print(email);
-                  //     print(password);
-                  //   }
-                  // },
+                  onPressed: () =>
+                      Navigator.pushNamed(context, LoginScreen.route),
                 ),
               ],
             ),

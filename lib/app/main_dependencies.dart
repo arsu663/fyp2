@@ -4,7 +4,7 @@ export '../screens/splash/splash_screen.dart';
 export '../screens/patient/patient_dashboard_view.dart';
 export '../screens/signup/sign_up_view.dart';
 export '../screens/login/login_view.dart';
-export '../models/category.dart';
+export '../models/dashboardCategory.dart';
 // export '../screens/doctor/doctor_dashboard_view.dart';
 export '../screens/doctor/doctor_dashboard_view.dart';
 export '../models/doctor.dart';

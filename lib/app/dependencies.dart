@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-import '../services/rest.dart';
 
 //Variable to hold the instance
 GetIt dependency = GetIt.instance;

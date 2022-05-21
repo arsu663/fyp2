@@ -2,10 +2,8 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mealapp/models/appUser.dart';
 import 'package:mealapp/screens/login/login_viewmodel.dart';
 import './app/router.dart' as router;
-import 'package:mealapp/services/auth.dart';
 import 'package:provider/provider.dart';
 
 import 'app/main_dependencies.dart';

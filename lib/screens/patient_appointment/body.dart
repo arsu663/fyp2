@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/mock_data.dart';
+import '../../mock/mock_data.dart';
 
 class Body extends StatelessWidget {
   @override
