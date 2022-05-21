@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
+import 'package:mealapp/controllers/user_controllers.dart';
 import 'package:mealapp/screens/login/login_viewmodel.dart';
 import 'package:mealapp/screens/login/widgets/user_input.dart';
 import 'package:mealapp/services/auth.dart';
@@ -29,6 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserController userController = context.watch<UserController>();
+
     return loading
         ? Loading()
         : Scaffold(
@@ -142,9 +145,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 onPressed: () async {
-                                  await viewmodel.login(
+                                  final user = await viewmodel.login(
                                       email: emailController.text,
                                       password: passwordController.text);
+                                  userController.setUser(user);
                                   Navigator.of(context).pushReplacementNamed(
                                     PatientDashboardScreen.route,
                                   );

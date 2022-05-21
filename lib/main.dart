@@ -7,6 +7,7 @@ import './app/router.dart' as router;
 import 'package:provider/provider.dart';
 
 import 'app/main_dependencies.dart';
+import 'controllers/user_controllers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LoginViewModel()),
+        ChangeNotifierProvider(create: (context) => UserController()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
