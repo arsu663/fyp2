@@ -1,0 +1,50 @@
+##############################################################
+# Mobile Application Programming (SCSJ3623)
+# Semester 2, 2019/2020
+##############################################################
+
+# REST API Server on Local Firebase
+# @baseUrl = http://localhost:5001/final-year-project-2-236f7/us-central1/api
+
+# REST API Server on Live Firebase
+@baseUrl = https://us-central1-final-year-project-2-236f7.cloudfunctions.net/api
+
+### Getting the list of todos
+GET {{baseUrl}}/users
+
+###  Getting a todo of given id
+GET {{baseUrl}}/users/gsQR8iLFbxErHfJyMdal
+
+###  Create a new todo
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "name": "Nasir",
+    "password": "test123",
+    "email": "arsu@gmail.com",
+    "phoneNumber": "123456",
+    "imageUrl": "",
+    "hasAppointment": false,
+    "dateTime": "Tue"
+}
+
+### Update the status of a given todo (whether is completed or not)
+PATCH {{baseUrl}}/users/MJmabl9URmnY871HPuad
+Content-Type: application/json
+
+{
+    "hasAppointment":true
+}
+
+
+### Replace the entire fields of a given todo
+PUT {{baseUrl}}/users/4oIt8y56TcAoatpSziCf
+Content-Type: application/json
+
+{
+    "hasAppointment": true
+}
+
+### Deleting a given todo
+DELETE {{baseUrl}}/users/4oIt8y56TcAoatpSziCf

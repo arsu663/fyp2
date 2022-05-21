@@ -4,6 +4,7 @@ import 'package:mealapp/mock/mock_list_doctors.dart';
 import 'package:mealapp/screens/doctor/doctor_details_screen.dart';
 
 class DoctorList extends StatefulWidget {
+   static const String route = "/DoctorsListScreen";
   List<Doctor> doctors;
 
   DoctorList(this.doctors);

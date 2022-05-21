@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         style: OutlinedButton.styleFrom(
           primary: Colors.white,
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.brown[600],
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               // bottomLeft: Radius.zero,
@@ -72,12 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
           buildButton(
               buttonTitle: 'Login',
               tapHandler: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => LoginScreen(),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
               }),
           SizedBox(
             height: 40,
@@ -85,12 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
           buildButton(
               buttonTitle: 'Sign Up',
               tapHandler: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => SignUpScreen(),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(),
+                  ),
+                );
               }),
         ],
       ),

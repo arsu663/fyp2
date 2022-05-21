@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
+import 'package:mealapp/screens/login/login_viewmodel.dart';
+import 'package:mealapp/screens/login/widgets/user_input.dart';
 import 'package:mealapp/services/auth.dart';
+import 'package:provider/provider.dart';
 
 import '../../shared/constants.dart';
 import '../../shared/loading.dart';
 
 class LoginScreen extends StatefulWidget {
-  final Function toggleView;
-  LoginScreen({required this.toggleView});
   static const String route = "/LoginPage";
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  // final _formKey = GlobalKey<FormState>();
   String error = '';
   bool loading = false;
 
-  // text field state
-  String email = '';
-  String password = '';
+  // // text field state
+  // String email = '';
+  // String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,93 +41,259 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               actions: <Widget>[
                 FlatButton.icon(
-                  icon: Icon(Icons.person),
-                  label: Text('Register'),
-                  onPressed: () => widget.toggleView(),
-                  // onPressed: () async {
-                  //   dynamic result = await _auth.signInAnnon();
-                  //   if (result == null) {
-                  //     print("Error Siging in");
-                  //   } else {
-                  //     print("Signed in");
-                  //     print(email);
-                  //     print(password);
-                  //   }
-                  // },
+                  icon: Icon(Icons.person, color: Colors.white),
+                  label: Text(
+                    'Register',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SignUpScreen.route),
                 ),
               ],
             ),
-
             body: SafeArea(
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: 20.0,
-                  horizontal: 50.0,
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 20.0),
-                      TextFormField(
-                        decoration:
-                            textInputDecoration.copyWith(hintText: 'email'),
-                        validator: (val) =>
-                            val!.isEmpty ? 'Enter an email' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                          // print(email);
-                        },
-                      ),
-                      SizedBox(height: 20.0),
-                      TextFormField(
-                        obscureText: true,
-                        decoration:
-                            textInputDecoration.copyWith(hintText: 'password'),
-                        validator: (val) => val!.length < 6
-                            ? 'Enter a password 6+ chars long'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                          // print(password);
-                        },
-                      ),
-                      SizedBox(height: 20.0),
-                      RaisedButton(
-                          color: Colors.pink[400],
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(color: Colors.white),
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 15, top: 20),
+                    child: Text(
+                      'Login With Your Credentials',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.brown[600],
                           ),
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              setState(() => loading = true);
-                              dynamic result = await _auth
-                                  .signInWithEmailAndPassword(email, password);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PatientDashboardScreen()));
-                              if (result == null) {
-                                setState(() {
-                                  loading = false;
-                                  error =
-                                      'Could not sign in with those credentials';
-                                });
-                              }
-                            }
-                          }),
-                      SizedBox(height: 12.0),
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 50.0,
+                    ),
+                    child: Container(
+                      // key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 20.0),
+
+                          UserInput(
+                            keyboardType: TextInputType.emailAddress,
+                            hintTitle: 'Username',
+                            userInput: emailController,
+                            password: false,
+                          ),
+                          UserInput(
+                            userInput: passwordController,
+                            hintTitle: 'Password',
+                            keyboardType: TextInputType.visiblePassword,
+                            password: true,
+                          ),
+
+                          // TextFormField(
+                          //   controller: emailController,
+                          //   decoration:
+                          //       textInputDecoration.copyWith(hintText: 'email'),
+                          //   validator: (value) {
+                          //     if (value!.isEmpty) {
+                          //       return 'Please enter a valid email';
+                          //     }
+                          //     if (!RegExp(
+                          //             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          //         .hasMatch(value)) {
+                          //       return "Please Enter A valid email";
+                          //     }
+                          //     return null;
+                          //   },
+                          //   // onChanged: (val) {
+                          //   //   setState(() => email = val);
+                          //   // },
+                          // ),
+                          SizedBox(height: 20.0),
+                          // TextFormField(
+                          //   controller: passwordController,
+                          //   obscureText: true,
+                          //   decoration:
+                          //       textInputDecoration.copyWith(hintText: 'password'),
+                          //   validator: (value) {
+                          //     if (value!.isEmpty) {
+                          //       return 'Please enter a your password';
+                          //     }
+                          //     if (value.length < 6) {
+                          //       return "Please Enter A valid pasword which is more than 6 characters";
+                          //     }
+                          //     return null;
+                          //   },
+
+                          //   // onChanged: (val) {
+                          //   //   setState(() => password = val);
+                          //   //   // print(password);
+                          //   // },
+                          // ),
+                          SizedBox(height: 20.0),
+                          Consumer<LoginViewModel>(
+                            builder: (context, viewmodel, _) {
+                              return RaisedButton(
+                                color: Colors.brown[600],
+                                child: Text(
+                                  'Sign In',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                onPressed: () async {
+                                  await viewmodel.login(
+                                      email: emailController.text,
+                                      password: passwordController.text);
+                                  Navigator.of(context).pushReplacementNamed(
+                                    PatientDashboardScreen.route,
+                                  );
+                                  print("working");
+                                  // if (_formKey.currentState!.validate()) {
+                                  //   setState(() => loading = true);
+                                  //   dynamic result = await _auth
+                                  //       .signInWithEmailAndPassword(email, password);
+                                  //   Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //           PatientDashboardScreen(),
+                                  //     ),
+                                  //   );
+                                  //   if (result == null) {
+                                  //     setState(() {
+                                  //       loading = false;
+                                  //       error =
+                                  //           'Could not sign in with those credentials';
+                                  //     });
+                                  //   }
+                                  // }
+                                },
+                              );
+                            },
+                          ),
+                          SizedBox(height: 12.0),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+          );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // body: SingleChildScrollView(
             //   child: Column(
             //     children: [
@@ -240,9 +410,7 @@ class _LoginScreenState extends State<LoginScreen> {
             //     ],
             //   ),
             // ),
-          );
-  }
-}
+      
 
 // _buildTextField(String text) {
 //   return Padding(

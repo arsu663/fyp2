@@ -5,6 +5,7 @@ import 'package:mealapp/screens/appointment/pickAppointment.dart';
 import '../../app/main_dependencies.dart';
 
 class DoctorDashboardScreen extends StatefulWidget {
+   static const String route = "/DoctorViewScreen";
   @override
   State<DoctorDashboardScreen> createState() => _DoctorDashboardScreenState();
 }

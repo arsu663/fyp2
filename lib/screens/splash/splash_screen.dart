@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../app/main_dependencies.dart';
 
 class SplashScreen extends StatefulWidget {
+   static const String route = "/Splash_Screen";
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
