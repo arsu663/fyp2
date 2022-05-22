@@ -10,4 +10,5 @@ export '../screens/doctor/doctor_dashboard_view.dart';
 export '../models/doctor.dart';
 export '../screens/doctor/doctors_list_screen.dart';
 export '../screens/patient_appointment/appointments.dart';
+import '../screens/appointment/pickAppointment.dart';
 

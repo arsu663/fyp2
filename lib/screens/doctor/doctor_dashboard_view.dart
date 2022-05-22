@@ -96,7 +96,7 @@ buildGridViewDoctor(BuildContext context) {
        Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DoctorPickAppointment(),
+            builder: (context) => PickAppointment(),
           ),
         );
     },

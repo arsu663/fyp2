@@ -6,10 +6,10 @@
   "dependencies": {
     "json-server": "^0.17.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "run-server": "json-server --host 192.168.1.1 db.json"
+    "run-server": "json-server --host 192.168.0.1 db.json",
+    "server": "json-server --host 192.168.0.1 db.json"
   },
-  "author": "",
+  "author": "Arsalan",
   "license": "ISC"
 }
