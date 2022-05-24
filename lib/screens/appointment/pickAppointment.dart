@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
-import 'bar.dart';
-import 'body.dart';
-import 'float.dart';
-
-class DoctorPickAppointment extends StatefulWidget {
+class PickAppointment extends StatefulWidget {
+  static const String route = "/pickAppointment";
+  const PickAppointment({Key? key}) : super(key: key);
 
   @override
-  _DoctorPickAppointmentState createState() => _DoctorPickAppointmentState();
+  State<PickAppointment> createState() => _PickAppointmentState();
 }
 
-class _DoctorPickAppointmentState extends State<DoctorPickAppointment> {
+class _PickAppointmentState extends State<PickAppointment> {
+  // CalendarController _calendarController = CalendarController();
+
   @override
   Widget build(BuildContext context) {
-   return WillPopScope(
-      onWillPop: () => Future.value(false),
-      child: SafeArea(
-        child: Scaffold(
-          appBar: Bar(),
-          body: Body(),
-          floatingActionButton: Float()
-        ),
-      ),
+    return Scaffold(
+      appBar: AppBar(title: Text("Pick Appointment")),
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+        //  TableCalendar(),
+        ],
+      )),
     );
   }
-  }
+}

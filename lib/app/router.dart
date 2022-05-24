@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/mock/mock_list_doctors.dart';
+import 'package:mealapp/screens/appointment/pickAppointment.dart';
 import 'main_dependencies.dart';
 
 Route<dynamic> createRoute(RouteSettings? settings) {
@@ -28,6 +29,15 @@ Route<dynamic> createRoute(RouteSettings? settings) {
     case PatientAppointmentScreen.route:
       return MaterialPageRoute(
           builder: (context) => PatientAppointmentScreen(), settings: settings);
+    case PickAppointment.route:
+      return MaterialPageRoute(
+          builder: (context) => PickAppointment(), settings: settings);
+    case UpdateBooking.route:
+      return MaterialPageRoute(
+          builder: (context) => UpdateBooking(), settings: settings);
+    case DoctorDetailScreen.route:
+      return MaterialPageRoute(
+          builder: (context) => DoctorDetailScreen(), settings: settings);
   }
   return MaterialPageRoute(
       builder: (context) => SplashScreen(), settings: settings);

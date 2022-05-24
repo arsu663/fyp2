@@ -5,7 +5,7 @@ import 'package:mealapp/screens/appointment/pickAppointment.dart';
 import '../../app/main_dependencies.dart';
 
 class DoctorDashboardScreen extends StatefulWidget {
-   static const String route = "/DoctorViewScreen";
+  static const String route = "/DoctorViewScreen";
   @override
   State<DoctorDashboardScreen> createState() => _DoctorDashboardScreenState();
 }
@@ -38,21 +38,6 @@ List<Category> doctorListCategory = [
 ];
 
 class _DoctorDashboardScreenState extends State<DoctorDashboardScreen> {
-  bool isFullScreen(Size currentSize, Size fullSize) {
-    print("$fullSize == $currentSize");
-
-    if (currentSize.height == fullSize.height &&
-        fullSize.width == currentSize.width)
-      return true;
-    else
-      return false;
-  }
-
-  Size getSize(BuildContext context) {
-    return Size(
-        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
-  }
-
   double? width, height;
   @override
   Widget build(BuildContext context) {
@@ -61,7 +46,7 @@ class _DoctorDashboardScreenState extends State<DoctorDashboardScreen> {
         width = constraints.maxWidth;
         height = constraints.maxHeight;
         return Scaffold(
-          backgroundColor: Colors.teal[100],
+          backgroundColor: Colors.brown[600],
           appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
             actions: [
@@ -93,12 +78,12 @@ buildGridViewDoctor(BuildContext context) {
   return InkWell(
     onTap: () {
       print("Pressed");
-       Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DoctorPickAppointment(),
-          ),
-        );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PickAppointment(),
+        ),
+      );
     },
     child: GridView.builder(
       padding: EdgeInsets.only(top: 80),

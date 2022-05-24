@@ -27,7 +27,7 @@ class Body extends StatelessWidget {
                         color: Theme.of(context).primaryColor, fontSize: 24),
                   ),
                   Text(
-                    'Doctor : ${patients[index].doctor!.name}',
+                    'Doctor : ${patients[index].doctorid}',
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: 20,

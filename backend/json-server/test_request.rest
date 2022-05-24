@@ -1,7 +1,7 @@
 ### Use this file to test out your REST call before implementing them in the code
 
 ### Change the IP address below to your PC's IP address. Remain the port number 3000 unchanged
-@baseUrl = http://192.168.1.1:3000
+@baseUrl = http://192.168.0.111:3000
 
 ### Request 1 : Get a user whose correct 'login' and 'password'
 ### Purpose   : To simulate the authentication process. 
@@ -9,7 +9,7 @@ GET {{baseUrl}}/users
 
 
 ###
-DELETE {{baseUrl}}/users/11
+DELETE {{baseUrl}}/users/1
 
 
 
@@ -18,21 +18,17 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {   
-    
+    "id": "4",
+    "name": "Adnan",
     "password": "123",
-    "email": "email@email.com"
+    "email": "email@email.com",
+    "phoneNumber" : "0707818288",
+    "imageUrl": "",
+    "hasAppointment": true
 }
 
 
 
-POST {{baseUrl}}/users
-Content-Type: application/json
-
-{   
-    
-    "password": "123",
-    "email": "email@email.com"
-}
 
 ###
 

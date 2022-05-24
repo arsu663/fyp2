@@ -1,82 +1,96 @@
-const UserModel = require("../models/users_model");
-const express = require("express");
-const router = express.Router();
+// Author: Jumail 
+// Email: jumail@utm.my
+// Github:  github.com/jumail-utm
+// Update: 5 Jun 2021
 
-// Get all users
-router.get("/", async (req, res, next) => {
-  try {
-    const result = await UserModel.get();
-    return res.json(result);
-  } catch (e) {
-    return next(e);
-  }
-});
+'use strict'
 
-// Get one user
-router.get("/:id", async (req, res, next) => {
-  try {
-    const result = await UserModel.getById(req.params.id);
-    if (!result) return res.sendStatus(404);
-    return res.json(result);
-  } catch (e) {
-    return next(e);
-  }
-});
+const Controller = require('./controller')
+const userModel = require('../models/users_model')
 
-// Create a new user
-router.post("/", async (req, res, next) => {
-  try {
-    const result = await UserModel.create(req.body);
-    if (!result) return res.sendStatus(409);
-    return res.status(201).json(result);
-  } catch (e) {
-    return next(e);
-  }
-});
+const usersController = new Controller(userModel)
+module.exports = usersController.router
 
-// Delete an user
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const result = await UserModel.delete(req.params.id);
-    if (!result) return res.sendStatus(404);
-    return res.sendStatus(200);
-  } catch (e) {
-    return next(e);
-  }
-});
 
-// Update an user
-router.patch("/:id", async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const data = req.body;
+// const UserModel = require("../models/users_model");
+// const express = require("express");
+// const router = express.Router();
 
-    const doc = await UserModel.getById(id);
-    if (!doc) return res.sendStatus(404);
+// // Get all users
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const result = await UserModel.get();
+//     return res.json(result);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
 
-    // Merge existing fields with the ones to be updated
-    Object.keys(data).forEach((key) => (doc[key] = data[key]));
+// // Get one user
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     const result = await UserModel.getById(req.params.id);
+//     if (!result) return res.sendStatus(404);
+//     return res.json(result);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
 
-    const updateResult = await UserModel.update(id, doc);
-    if (!updateResult) return res.sendStatus(404);
+// // Create a new user
+// router.post("/", async (req, res, next) => {
+//   try {
+//     const result = await UserModel.create(req.body);
+//     if (!result) return res.sendStatus(409);
+//     return res.status(201).json(result);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
 
-    return res.json(doc);
-  } catch (e) {
-    return next(e);
-  }
-});
+// // Delete an user
+// router.delete("/:id", async (req, res, next) => {
+//   try {
+//     const result = await UserModel.delete(req.params.id);
+//     if (!result) return res.sendStatus(404);
+//     return res.sendStatus(200);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
 
-// Replace an user
-router.put("/:id", async (req, res, next) => {
-  try {
-    const updateResult = await UserModel.update(req.params.id, req.body);
-    if (!updateResult) return res.sendStatus(404);
+// // Update an user
+// router.patch("/:id", async (req, res, next) => {
+//   try {
+//     const id = req.params.id;
+//     const data = req.body;
 
-    const result = await UserModel.getById(req.params.id);
-    return res.json(result);
-  } catch (e) {
-    return next(e);
-  }
-});
+//     const doc = await UserModel.getById(id);
+//     if (!doc) return res.sendStatus(404);
 
-module.exports = router;
+//     // Merge existing fields with the ones to be updated
+//     Object.keys(data).forEach((key) => (doc[key] = data[key]));
+
+//     const updateResult = await UserModel.update(id, doc);
+//     if (!updateResult) return res.sendStatus(404);
+
+//     return res.json(doc);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
+
+// // Replace an user
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     const updateResult = await UserModel.update(req.params.id, req.body);
+//     if (!updateResult) return res.sendStatus(404);
+
+//     const result = await UserModel.getById(req.params.id);
+//     return res.json(result);
+//   } catch (e) {
+//     return next(e);
+//   }
+// });
+
+// module.exports = router;

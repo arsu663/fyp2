@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class Rest {
+class RestServices {
   //? Change the baseUrl according to your PC's IP address. Remain the port as 3000
 
-  // static const String _baseUrl = 'http://192.168.1.1:3000';
-  static const String _baseUrl =
-      'https://us-central1-final-year-project-2-236f7.cloudfunctions.net/api';
+  static const String _baseUrl = 'http://192.168.0.111:3000';
+  
+  // static const String _baseUrl =
+  //     'https://us-central1-final-year-project-2-236f7.cloudfunctions.net/api';
   // 'http://localhost:5001/final-year-project-2-a6fb6/us-central1/api';
   // 'Remove  other and add  ur api key to  connect';
 
