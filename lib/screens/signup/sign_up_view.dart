@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
+import 'package:mealapp/models/appUser.dart';
+import 'package:mealapp/screens/login/user_authentication_details.dart';
 import 'package:mealapp/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 import '../../shared/constants.dart';
 import '../../shared/loading.dart';
@@ -19,6 +22,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  final AppUser user = AppUser();
   String error = '';
   bool loading = false;
 
@@ -38,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 "Register to Mohmand Hospital",
               ),
               actions: <Widget>[
-                   FlatButton.icon(
+                FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Login'),
                   onPressed: () =>
@@ -47,80 +51,224 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
             body: SafeArea(
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: 20.0,
-                  horizontal: 50.0,
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 20.0),
-                      TextFormField(
-                        decoration:
-                            textInputDecoration.copyWith(hintText: 'email'),
-                        validator: (val) =>
-                            val!.isEmpty ? 'Enter an email' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                          // print(email);
-                        },
+                child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 20.0,
+                horizontal: 50.0,
+              ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      // controller: ema,
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.name,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: 'Name',
                       ),
-                      SizedBox(height: 20.0),
-                      TextFormField(
-                        obscureText: true,
-                        decoration:
-                            textInputDecoration.copyWith(hintText: 'password'),
-                        validator: (val) => val!.length < 6
-                            ? 'Enter a password 6+ chars long'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                          // print(password);
-                        },
+                      validator: (name) {
+                        if (name!.isEmpty) {
+                          return "Please type your Name";
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      // controller: ema,
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: 'Email',
                       ),
-                      SizedBox(height: 20.0),
-                      RaisedButton(
-                          color: Colors.pink[400],
-                          child: Text(
-                            'Register',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              // print(email);
-                              // print(password);
-                              setState(() => loading = true);
-                              dynamic result =
-                                  await _auth.registerWithEmailAndPassword(
-                                      email, password);
-                              if (result == null) {
-                                setState(() {
-                                  loading = false;
-                                  error =
-                                      'Could not sign in with those credentials';
-                                });
-                              } else {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginScreen()));
-                              }
-                            }
-                          }),
-                      SizedBox(height: 12.0),
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      validator: (email) {
+                        if (email!.isEmpty) {
+                          return "Please type your Email";
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      // controller: ema,
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: 'Password',
                       ),
-                    ],
-                  ),
+                      validator: (password) {
+                        if (password!.isEmpty) {
+                          return "Please type your password";
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      // controller: ema,
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.number,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: 'Phone Number',
+                      ),
+                      validator: (phoneNumber) {
+                        if (phoneNumber!.isEmpty) {
+                          return "Please type your Phone Number";
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    RaisedButton(
+                        color: Colors.pink[400],
+                        child: Text(
+                          'Register',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {}),
+                    SizedBox(height: 12.0),
+                    Text(
+                      error,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
+                  ],
                 ),
               ),
-            ));
+            )));
   }
 }
+
+// Container(
+//                 padding: EdgeInsets.symmetric(
+//                   vertical: 20.0,
+//                   horizontal: 50.0,
+//                 ),
+//                 child: Form(
+//                   key: _formKey,
+//                   child: Column(
+//                     children: <Widget>[
+//                       SizedBox(height: 20.0),
+//                       TextFormField(
+//                         // controller: ema,
+//                         textAlign: TextAlign.left,
+//                         keyboardType: TextInputType.name,
+//                         decoration: textInputDecoration.copyWith(
+//                           hintText: 'Name',
+//                         ),
+//                         validator: (name) {
+//                           if (name!.isEmpty) {
+//                             return "Please type your Name";
+//                           }
+//                           return null;
+//                         },
+//                       ),
+//                       SizedBox(height: 20.0),
+//                       TextFormField(
+//                         // controller: ema,
+//                         textAlign: TextAlign.left,
+//                         keyboardType: TextInputType.emailAddress,
+//                         decoration: textInputDecoration.copyWith(
+//                           hintText: 'Email',
+//                         ),
+//                         validator: (email) {
+//                           if (email!.isEmpty) {
+//                             return "Please type your Email";
+//                           }
+//                           return null;
+//                         },
+//                       ),
+//                       SizedBox(height: 20.0),
+//                       TextFormField(
+//                         // controller: ema,
+//                         textAlign: TextAlign.left,
+//                         keyboardType: TextInputType.visiblePassword,
+//                         obscureText: true,
+//                         decoration: textInputDecoration.copyWith(
+//                           hintText: 'Password',
+//                         ),
+//                         validator: (password) {
+//                           if (password!.isEmpty) {
+//                             return "Please type your password";
+//                           }
+//                           return null;
+//                         },
+//                       ),
+//                       SizedBox(height: 20.0),
+//                       TextFormField(
+//                         // controller: ema,
+//                         textAlign: TextAlign.left,
+//                         keyboardType: TextInputType.number,
+//                         decoration: textInputDecoration.copyWith(
+//                           hintText: 'Phone Number',
+//                         ),
+//                         validator: (phoneNumber) {
+//                           if (phoneNumber!.isEmpty) {
+//                             return "Please type your Phone Number";
+//                           }
+//                           return null;
+//                         },
+//                       ),
+//                       SizedBox(height: 20.0),
+//                       RaisedButton(
+//                           color: Colors.pink[400],
+//                           child: Text(
+//                             'Register',
+//                             style: TextStyle(color: Colors.white),
+//                           ),
+//                           onPressed: () {}),
+//                       SizedBox(height: 12.0),
+//                       Text(
+//                         error,
+//                         style: TextStyle(color: Colors.red, fontSize: 14.0),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

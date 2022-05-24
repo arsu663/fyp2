@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mealapp/screens/appointment/pickAppointment.dart';
 import 'package:mealapp/screens/login/login_viewmodel.dart';
+import 'package:mealapp/screens/login/user_authentication_details.dart';
 import 'package:mealapp/screens/signup/signup_viewmodel.dart';
 import './app/router.dart' as router;
 import 'package:provider/provider.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginViewModel()),
         // ChangeNotifierProvider(create: (context) => SignuUpViewModel()),
         ChangeNotifierProvider(create: (context) => UserController()),
+        // ChangeNotifierProvider(create: (context) => UserAuth()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
                     TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
               ),
         ),
-        initialRoute: SignUpScreen.route,
+        initialRoute: PatientDashboardScreen.route,
         onGenerateRoute: router.createRoute,
       ),
     );

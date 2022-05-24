@@ -32,6 +32,12 @@ Route<dynamic> createRoute(RouteSettings? settings) {
     case PickAppointment.route:
       return MaterialPageRoute(
           builder: (context) => PickAppointment(), settings: settings);
+    case UpdateBooking.route:
+      return MaterialPageRoute(
+          builder: (context) => UpdateBooking(), settings: settings);
+    case DoctorDetailScreen.route:
+      return MaterialPageRoute(
+          builder: (context) => DoctorDetailScreen(), settings: settings);
   }
   return MaterialPageRoute(
       builder: (context) => SplashScreen(), settings: settings);

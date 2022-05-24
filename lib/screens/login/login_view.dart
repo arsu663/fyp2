@@ -143,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     'Sign In',
                                     style: TextStyle(color: Colors.white),
                                   ),
+                                  // onPressed: Navigator.push(context, MaterialPageRoute(builder: (context)=>PatientDashboardScreen()))
                                   onPressed: () => _onLoginPresseed(
                                       context: context, viewModel: viewmodel),
                                 );

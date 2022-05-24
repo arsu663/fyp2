@@ -1,3 +1,8 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AppUser {
   dynamic? _id;
   String? _name;
@@ -51,6 +56,24 @@ class AppUser {
           appointment: json['appointment'],
           hasAppointment: json['hasAppointment'],
         );
+
+  // DocumentReference? get firestoreRef {
+  //   FirebaseFirestore.instance.doc("users/$id");
+  // }
+
+  // Future<void> saveInfo() async {
+  //   await firestoreRef?.set(toJson());
+  // }
+
+  // AppUser.fromDocument(DocumentSnapshot? documentSnapshot) {
+  //   id = documentSnapshot?.id;
+  //   imageUrl = documentSnapshot?.get("imageUrl");
+  //   password = documentSnapshot?.get("password");
+  //   email = documentSnapshot?.get("email");
+  //   phoneNumber = documentSnapshot?.get("phoneNumber");
+  //   appointment = documentSnapshot?.get("appointment");
+  //   hasAppointment = documentSnapshot?.get("hasAppointment");
+  //   name = documentSnapshot?.get("name");}
 
   Map<String, dynamic> toJson() => {
         'id': id,

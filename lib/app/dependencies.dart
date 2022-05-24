@@ -4,6 +4,9 @@ import 'package:mealapp/screens/login/login_viewmodel.dart';
 import 'package:mealapp/services/login/login_service.dart';
 import 'package:mealapp/services/login/login_services_rest.dart';
 import 'package:mealapp/services/rest.dart';
+
+import '../services/appointments/appointment_services.dart';
+import '../services/appointments/appointment_services_rest.dart';
 // import 'package:mealapp/services/signup/signup_service.dart';
 
 // import '../services/signup/signup_service_rest.dart';
@@ -16,6 +19,8 @@ void init() {
   dependency.registerLazySingleton<LoginServices>(() => LoginServiceRest());
   // dependency.registerLazySingleton<SignupServices>(() => SignUpServiceRest());
   // dependency.registerLazySingleton<UserService>(() => UserServiceRest());
+    dependency.registerLazySingleton<AppointmentService>(
+      () => AppointmentServiceRest());
 
 //   // Viewmodels
   dependency.registerLazySingleton(() => LoginViewModel());
