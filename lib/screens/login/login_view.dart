@@ -49,8 +49,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, SignUpScreen.route),
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        SignUpScreen.route, (route) => false);
+                  },
                 ),
               ],
             ),
@@ -128,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                                 return null;
                               },
-
                               onChanged: (val) {
                                 setState(() => password = val);
                                 // print(password);

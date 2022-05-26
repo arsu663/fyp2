@@ -7,6 +7,8 @@ import 'package:mealapp/services/rest.dart';
 
 import '../services/appointments/appointment_services.dart';
 import '../services/appointments/appointment_services_rest.dart';
+import '../services/singup/signup_service.dart';
+import '../services/singup/signup_service_rest.dart';
 // import 'package:mealapp/services/signup/signup_service.dart';
 
 // import '../services/signup/signup_service_rest.dart';
@@ -15,9 +17,9 @@ GetIt dependency = GetIt.instance;
 
 void init() {
   // Services
-  dependency.registerLazySingleton<RestServices>(() => RestServices());
+  dependency.registerLazySingleton(() => RestServices());
   dependency.registerLazySingleton<LoginServices>(() => LoginServiceRest());
-  // dependency.registerLazySingleton<SignupServices>(() => SignUpServiceRest());
+  dependency.registerLazySingleton<SignupServices>(() => SignUpServiceRest());
   // dependency.registerLazySingleton<UserService>(() => UserServiceRest());
     dependency.registerLazySingleton<AppointmentService>(
       () => AppointmentServiceRest());

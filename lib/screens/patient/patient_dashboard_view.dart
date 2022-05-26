@@ -89,7 +89,9 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                   icon: FontAwesomeIcons.bookMedical,
                   title: "Previous Appointments",
                   subtitle: "See All your appointments",
-                  tapHhandler: () {},
+                  tapHhandler: () {
+                    // Navigator.
+                  },
                 ),
               ],
             ),

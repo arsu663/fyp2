@@ -26,6 +26,10 @@ Content-Type: application/json
     "imageUrl": "",
     "hasAppointment": true
 }
+### Request 1 : Get a user whose correct 'login' and 'password'
+### Purpose   : To simulate the authentication process. 
+GET {{baseUrl}}/users?login=arsu&password=123
+
 
 
 
