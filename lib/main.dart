@@ -7,9 +7,11 @@ import './app/router.dart' as router;
 import 'package:provider/provider.dart';
 
 import 'app/main_dependencies.dart';
+import 'app/dependencies.dart' as di;
 import 'controllers/user_controllers.dart';
 
 void main() async {
+  di.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
                     TextStyle(fontSize: 22, fontFamily: 'RobotoCondensed'),
               ),
         ),
-        initialRoute: PatientDashboardScreen.route,
+        initialRoute: HomeScreen.route,
         onGenerateRoute: router.createRoute,
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
 import 'package:mealapp/models/appUser.dart';
+import 'package:mealapp/screens/signup/signup_viewmodel.dart';
 import 'package:mealapp/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -19,15 +20,16 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final AuthService _auth = AuthService();
+  //final AuthService _auth = AuthService();
+  SignUpViewmodel _viewmodel = SignUpViewmodel();
   final _formKey = GlobalKey<FormState>();
   final AppUser user = AppUser();
   String error = '';
   bool loading = false;
 
   // text field state
-  String email = '';
-  String password = '';
+  //String email = '';
+  //String password = '';
   @override
   Widget build(BuildContext context) {
     return loading
@@ -63,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: <Widget>[
                     SizedBox(height: 20.0),
                     TextFormField(
-                      // controller: ema,
+                      controller: _viewmodel.nameController,
                       textAlign: TextAlign.left,
                       keyboardType: TextInputType.name,
                       decoration: textInputDecoration.copyWith(
@@ -78,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
-                      // controller: ema,
+                      controller: _viewmodel.emailController,
                       textAlign: TextAlign.left,
                       keyboardType: TextInputType.emailAddress,
                       decoration: textInputDecoration.copyWith(
@@ -93,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
-                      // controller: ema,
+                      controller: _viewmodel.passwordController,
                       textAlign: TextAlign.left,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
@@ -109,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
-                      // controller: ema,
+                      controller: _viewmodel.phoneController,
                       textAlign: TextAlign.left,
                       keyboardType: TextInputType.number,
                       decoration: textInputDecoration.copyWith(
@@ -129,7 +131,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           'Register',
                           style: TextStyle(color: Colors.white),
                         ),
-                        onPressed: () {}),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              loading = true;
+                            });
+                            var res = await _viewmodel.signUp();
+                            await _viewmodel.postUserData();
+                            if (res != null) {
+                              setState(() {
+                                loading = false;
+                              });
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Successfully Registered"),
+                                //duration: Duration(seconds: 2),
+                              ));
+                              Navigator.pushNamed(
+                                  context, PatientDashboardScreen.route);
+                            } else {
+                              setState(() {
+                                loading = false;
+                                error = 'Invalid Credentials';
+                              });
+                            }
+                          }
+                        }),
                     SizedBox(height: 12.0),
                     Text(
                       error,

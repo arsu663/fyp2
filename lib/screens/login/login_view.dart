@@ -15,20 +15,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  // final emailController = TextEditingController();
+  // final passwordController = TextEditingController();
+
+  LoginViewModel _viewModel = LoginViewModel();
 
   final _formKey = GlobalKey<FormState>();
   String error = '';
   bool loading = false;
 
   // / text field state
-  String email = '';
-  String password = '';
+  // String email = '';
+  // String password = '';
 
   @override
   Widget build(BuildContext context) {
-    UserController userController = context.watch<UserController>();
+    //UserController userController = context.watch<UserController>();
 
     return loading
         ? Loading()
@@ -97,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             // ),
 
                             TextFormField(
-                              controller: emailController,
+                              controller: _viewModel.emailController,
                               decoration: textInputDecoration.copyWith(
                                   hintText: 'email'),
                               validator: (value) {
@@ -111,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                                 return null;
                               },
-                              onChanged: (val) {
-                                setState(() => email = val);
-                              },
+                              // onChanged: (val) {
+                              //   setState(() => email = val);
+                              // },
                             ),
                             SizedBox(height: 20.0),
                             TextFormField(
-                              controller: passwordController,
+                              controller: _viewModel.passwordController,
                               obscureText: true,
                               decoration: textInputDecoration.copyWith(
                                   hintText: 'password'),
@@ -130,24 +132,43 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                                 return null;
                               },
-                              onChanged: (val) {
-                                setState(() => password = val);
-                                // print(password);
-                              },
+                              // onChanged: (val) {
+                              //   setState(() => password = val);
+                              //   // print(password);
+                              // },
                             ),
                             SizedBox(height: 20.0),
-                            Consumer<LoginViewModel>(
-                              builder: (context, viewmodel, _) {
-                                return RaisedButton(
-                                  color: Colors.brown[600],
-                                  child: Text(
-                                    'Sign In',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  // onPressed: Navigator.push(context, MaterialPageRoute(builder: (context)=>PatientDashboardScreen()))
-                                  onPressed: () => _onLoginPresseed(
-                                      context: context, viewModel: viewmodel),
-                                );
+                            RaisedButton(
+                              color: Colors.brown[600],
+                              child: Text(
+                                'Sign In',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              // onPressed: Navigator.push(context, MaterialPageRoute(builder: (context)=>PatientDashboardScreen()))
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  setState(() {
+                                    loading = true;
+                                  });
+                                  var res = await _viewModel.loginUser();
+                                  if (res != null) {
+                                    setState(() {
+                                      loading = false;
+                                    });
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text("Successfully Singed In"),
+                                      //duration: Duration(seconds: 2),
+                                    ));
+                                    Navigator.pushReplacementNamed(
+                                        context, PatientDashboardScreen.route);
+                                  } else {
+                                    setState(() {
+                                      loading = false;
+                                      error = 'Invalid Credentials';
+                                    });
+                                  }
+                                }
                               },
                             ),
                             SizedBox(height: 12.0),
@@ -167,19 +188,19 @@ class _LoginScreenState extends State<LoginScreen> {
           );
   }
 
-  void _onLoginPresseed(
-      {required BuildContext context,
-      required LoginViewModel viewModel}) async {
-    final user = await viewModel.login(
-      email: emailController.text,
-      password: passwordController.text,
-    );
-    // userController.setUser(user);
-    Navigator.of(context).pushReplacementNamed(
-      PatientDashboardScreen.route,
-    );
-    print("working");
-  }
+  // void _onLoginPresseed(
+  //     {required BuildContext context,
+  //     required LoginViewModel viewModel}) async {
+  //   final user = await viewModel.login(
+  //     email: emailController.text,
+  //     password: passwordController.text,
+  //   );
+  //   // userController.setUser(user);
+  //   Navigator.of(context).pushReplacementNamed(
+  //     PatientDashboardScreen.route,
+  //   );
+  //   print("working");
+  // }
 }
 
 

@@ -31,7 +31,7 @@ class View<T extends Viewmodel> extends StatelessWidget {
       );
     }
 
-    return builder(context, viewmodel, child as  Widget);
+    return builder(context, viewmodel, child as Widget);
   }
 
   @override
@@ -82,6 +82,7 @@ class WidgetView<T extends Viewmodel> extends View<T> {
   Widget build(BuildContext context) {
     final viewmodel = dependency<T>();
     return ChangeNotifierProvider.value(
-        value: _setupViewmodel(), child: _builder(context, viewmodel, null as Widget));
+        value: _setupViewmodel(),
+        child: _builder(context, viewmodel, null as Widget));
   }
 }

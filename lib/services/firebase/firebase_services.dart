@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseService {
   // FirebaseFirestore firestore = FirebaseFirestore.instance;
   // Firestore firestore = Firestore.instance;
   static final FirebaseService _instance = FirebaseService._constructor();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   factory FirebaseService() {
     return _instance;
@@ -41,7 +43,7 @@ class FirebaseService {
     if (collection != null && data != null) {
       return await FirebaseFirestore.instance
           .collection(collection)
-          .doc()
+          .doc(_auth.currentUser!.uid)
           .set(data);
     }
   }

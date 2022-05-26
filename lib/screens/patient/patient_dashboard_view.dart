@@ -21,11 +21,12 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
       backgroundColor: Colors.brown[300],
       // backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           CircleAvatar(
             backgroundColor: Theme.of(context).primaryColor,
-            child: Image.asset('assets/images/arsu.png'),
+            backgroundImage: AssetImage('assets/images/arsu.png'),
           ),
         ],
         elevation: 10.0,
@@ -34,7 +35,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
             "Patient Dashboard",
             style: TextStyle(
               fontWeight: FontWeight.w900,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ),
