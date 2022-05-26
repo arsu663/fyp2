@@ -31,10 +31,12 @@
 
 
 import 'package:mealapp/services/rest.dart';
+import 'package:mealapp/services/singup/signup_service.dart';
 
 import '../../models/appUser.dart';
 
-class SignUpService extends RestServices{
+class SignUpServiceRest extends SignupServices{
+  
    Future<AppUser> addUser(AppUser user) async {
     final json = await RestServices.post('users', data: user.toJson());
     print('done');

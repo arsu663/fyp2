@@ -4,7 +4,7 @@ import 'package:mealapp/mock/mock_list_doctors.dart';
 import 'package:mealapp/screens/doctor/doctor_details_screen.dart';
 
 class DoctorList extends StatefulWidget {
-   static const String route = "/DoctorsListScreen";
+  static const String route = "/DoctorsListScreen";
   List<Doctor> doctors;
 
   DoctorList(this.doctors);
@@ -16,7 +16,7 @@ class _DoctorListState extends State<DoctorList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xffF0F0F0),
+      backgroundColor: Colors.brown[200],
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text("Doctors"),
@@ -26,6 +26,7 @@ class _DoctorListState extends State<DoctorList> {
         itemCount: doctors.length,
         itemBuilder: (context, index) {
           return Card(
+            // color: Colors.,
             child: ListTile(
               title: Text(doctors[index].name as String),
               leading: SizedBox(
@@ -35,7 +36,9 @@ class _DoctorListState extends State<DoctorList> {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => DoctorDetailScreen(doctors: doctors[index], )));
+                    builder: (context) => DoctorDetailScreen(
+                          doctors: doctors[index],
+                        )));
                 print("Pressed");
               },
             ),

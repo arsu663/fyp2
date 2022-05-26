@@ -22,87 +22,88 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
         title: Text("${widget.doctors!.name as String}'s Profile"),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(widget.doctors!.imageURL as String),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Name: ${widget.doctors!.name as String}",
-              style: TextStyle(
-                fontFamily: "RobotoCondensed",
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Speciality: ${widget.doctors!.speciality as String}",
-              style: TextStyle(
-                fontFamily: "RobotoCondensed",
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Email: ${widget.doctors!.email as String}",
-              style: TextStyle(
-                fontFamily: "RobotoCondensed",
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              height: 40,
-              thickness: 0.8,
-              color: Colors.teal,
-            ),
-            Center(
-              child: Container(
-                height: 80,
-                width: 300,
-                child: OutlinedButton(
-                  child: Text(
-                    "Book Appointment",
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
+          margin: EdgeInsets.all(10),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.network(widget.doctors!.imageURL as String),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Name: ${widget.doctors!.name as String}",
+                  style: TextStyle(
+                    fontFamily: "RobotoCondensed",
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  style: OutlinedButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.brown[600],
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        // bottomLeft: Radius.zero,
-                        bottomRight: Radius.circular(20),
-                        topLeft: Radius.elliptical(
-                          12,
-                          10,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Speciality: ${widget.doctors!.speciality as String}",
+                  style: TextStyle(
+                    fontFamily: "RobotoCondensed",
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Email: ${widget.doctors!.email as String}",
+                  style: TextStyle(
+                    fontFamily: "RobotoCondensed",
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  height: 40,
+                  thickness: 0.8,
+                  color: Colors.teal,
+                ),
+                Center(
+                  child: Container(
+                    height: 80,
+                    width: 300,
+                    child: OutlinedButton(
+                      child: Text(
+                        "Book Appointment",
+                        style: TextStyle(
+                          fontSize: 25,
                         ),
                       ),
+                      style: OutlinedButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.brown[600],
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            // bottomLeft: Radius.zero,
+                            bottomRight: Radius.circular(20),
+                            topLeft: Radius.elliptical(
+                              12,
+                              10,
+                            ),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
                     ),
                   ),
-                  onPressed: () {},
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
+          )),
 
       // SafeArea(
       //   child: ListView.separated(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/app/main_dependencies.dart';
 import 'package:mealapp/models/appUser.dart';
-import 'package:mealapp/screens/login/user_authentication_details.dart';
 import 'package:mealapp/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -45,8 +44,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Login'),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, LoginScreen.route),
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        LoginScreen.route, (route) => false);
+                  },
                 ),
               ],
             ),

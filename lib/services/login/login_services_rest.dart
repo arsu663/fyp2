@@ -5,7 +5,6 @@ import '../rest.dart';
 import '../../models/appUser.dart';
 
 class LoginServiceRest implements LoginServices {
-  RestServices get rest => dependency();
   @override
   Future<AppUser?> authenicate({String? email, String? password}) async {
     final json =
