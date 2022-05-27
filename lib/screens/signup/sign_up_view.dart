@@ -54,118 +54,120 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
             body: SafeArea(
-                child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 20.0,
-                horizontal: 50.0,
-              ),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      controller: _viewmodel.nameController,
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.name,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: 'Name',
-                      ),
-                      validator: (name) {
-                        if (name!.isEmpty) {
-                          return "Please type your Name";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      controller: _viewmodel.emailController,
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: 'Email',
-                      ),
-                      validator: (email) {
-                        if (email!.isEmpty) {
-                          return "Please type your Email";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      controller: _viewmodel.passwordController,
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: 'Password',
-                      ),
-                      validator: (password) {
-                        if (password!.isEmpty) {
-                          return "Please type your password";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      controller: _viewmodel.phoneController,
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.number,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: 'Phone Number',
-                      ),
-                      validator: (phoneNumber) {
-                        if (phoneNumber!.isEmpty) {
-                          return "Please type your Phone Number";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    RaisedButton(
-                        color: Colors.pink[400],
-                        child: Text(
-                          'Register',
-                          style: TextStyle(color: Colors.white),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 20.0,
+                  horizontal: 50.0,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _viewmodel.nameController,
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.name,
+                        decoration: textInputDecoration.copyWith(
+                          hintText: 'Name',
                         ),
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              loading = true;
-                            });
-                            var res = await _viewmodel.signUp();
-                            await _viewmodel.postUserData();
-                            if (res != null) {
-                              setState(() {
-                                loading = false;
-                              });
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text("Successfully Registered"),
-                                //duration: Duration(seconds: 2),
-                              ));
-                              Navigator.pushNamed(
-                                  context, PatientDashboardScreen.route);
-                            } else {
-                              setState(() {
-                                loading = false;
-                                error = 'Invalid Credentials';
-                              });
-                            }
+                        validator: (name) {
+                          if (name!.isEmpty) {
+                            return "Please type your Name";
                           }
-                        }),
-                    SizedBox(height: 12.0),
-                    Text(
-                      error,
-                      style: TextStyle(color: Colors.red, fontSize: 14.0),
-                    ),
-                  ],
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _viewmodel.emailController,
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: textInputDecoration.copyWith(
+                          hintText: 'Email',
+                        ),
+                        validator: (email) {
+                          if (email!.isEmpty) {
+                            return "Please type your Email";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _viewmodel.passwordController,
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
+                        decoration: textInputDecoration.copyWith(
+                          hintText: 'Password',
+                        ),
+                        validator: (password) {
+                          if (password!.isEmpty) {
+                            return "Please type your password";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _viewmodel.phoneController,
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.number,
+                        decoration: textInputDecoration.copyWith(
+                          hintText: 'Phone Number',
+                        ),
+                        validator: (phoneNumber) {
+                          if (phoneNumber!.isEmpty) {
+                            return "Please type your Phone Number";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      RaisedButton(
+                          color: Colors.pink[400],
+                          child: Text(
+                            'Register',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              setState(() {
+                                loading = true;
+                              });
+                              var res = await _viewmodel.signUp();
+                              await _viewmodel.postUserData();
+                              if (res != null) {
+                                setState(() {
+                                  loading = false;
+                                });
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("Successfully Registered"),
+                                  //duration: Duration(seconds: 2),
+                                ));
+                                Navigator.pushNamed(
+                                    context, PatientDashboardScreen.route);
+                              } else {
+                                setState(() {
+                                  loading = false;
+                                  error = 'Invalid Credentials';
+                                });
+                              }
+                            }
+                          }),
+                      SizedBox(height: 12.0),
+                      Text(
+                        error,
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )));
+            ),
+          );
   }
 }
 

@@ -25,6 +25,7 @@ class SignUpViewmodel extends Viewmodel {
     Map<String, dynamic> userDataMap = {
       "name": nameController.text,
       "phone": phoneController.text,
+      "email":emailController.text,
     };
     var res = await _fservices.post(collection: "users", data: userDataMap);
     print(res);
